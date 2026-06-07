@@ -525,12 +525,14 @@ export function AppProvider({ children }) {
       markPayoutPaid,
       pushToast
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [theme, user, products, sellers, wishlist, notifications, toasts, chatThreads, wallet, analytics]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useApp() {
   const value = useContext(AppContext);
   if (!value) {

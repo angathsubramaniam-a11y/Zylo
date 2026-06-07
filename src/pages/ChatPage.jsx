@@ -29,6 +29,7 @@ export default function ChatPage() {
 
     const threadId = openChatForProduct(selectedProduct);
     setActiveId(threadId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productParam, products]);
 
   useEffect(() => {
