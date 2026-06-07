@@ -859,6 +859,10 @@ if (process.env.NODE_ENV === 'production') {
   app.use(vite.middlewares);
 }
 
-server.listen(port, () => {
-  console.log(`Zylo API & Web running on http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  server.listen(port, () => {
+    console.log(`Zylo API & Web running on http://localhost:${port}`);
+  });
+}
+
+export default app;
