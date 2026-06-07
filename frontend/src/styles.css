@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(99, 102, 241, 0.18);
+  --text: #101125;
+}
+
+.dark {
+  color-scheme: dark;
+  --surface: rgba(10, 14, 42, 0.7);
+  --surface-strong: rgba(13, 17, 48, 0.9);
+  --line: rgba(125, 211, 252, 0.18);
+  --text: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: #f8fafc;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark body {
+  background: #07091c;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(168, 85, 247, 0.28);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #a855f7, #0ea5e9);
+  border-radius: 999px;
+}
+
+@layer components {
+  .app-shell {
+    @apply min-h-screen bg-slate-50 text-zylo-ink transition-colors duration-300 dark:bg-zylo-navy dark:text-white;
+  }
+
+  .page-pad {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+  }
+
+  .gradient-text {
+    @apply bg-brand bg-clip-text text-transparent;
+  }
+
+  .icon-button {
+    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-violet-300 hover:text-violet-600 active:scale-95 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:text-sky-200;
+  }
+
+  .primary-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-violet-600 px-5 py-3 font-black text-white shadow-sm transition hover:bg-violet-700 active:scale-[0.98];
+  }
+
+  .secondary-button {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 font-black text-slate-800 shadow-sm transition hover:border-violet-300 hover:text-violet-700 active:scale-[0.98] dark:border-white/15 dark:bg-white/10 dark:text-white;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 dark:border-white/10 dark:bg-white/10 dark:text-white dark:placeholder:text-slate-400 dark:focus:border-sky-300 dark:focus:ring-sky-300/20;
+  }
+
+  .mini-badge {
+    @apply inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-black uppercase text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/10 dark:text-white;
+  }
+
+  .product-card {
+    @apply relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-200 hover:border-violet-300 hover:shadow-md dark:border-white/10 dark:bg-white/10;
+  }
+
+  .section-band {
+    @apply relative py-8 sm:py-10;
+  }
+
+  .sticky-blur {
+    @apply sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur transition dark:border-white/10 dark:bg-zylo-navy/95;
+  }
+
+  .tab-button {
+    @apply rounded-xl px-4 py-2 text-sm font-extrabold transition hover:bg-slate-100 hover:text-violet-700 dark:hover:bg-white/10 dark:hover:text-sky-200;
+  }
+
+  .tab-active {
+    @apply bg-violet-600 text-white shadow-sm;
+  }
+}
+
+.ambient-field {
+  display: none;
+}
+
+.ambient-field::before,
+.ambient-field::after {
+  content: '';
+  position: absolute;
+  width: 70vw;
+  height: 70vw;
+  max-width: 760px;
+  max-height: 760px;
+  filter: blur(18px);
+  opacity: 0.5;
+  transform: rotate(12deg);
+}
+
+.ambient-field::before {
+  left: -22%;
+  top: -34%;
+  background: conic-gradient(from 120deg, rgba(244, 63, 139, 0.32), rgba(14, 165, 233, 0.18), rgba(168, 85, 247, 0.28), transparent);
+}
+
+.ambient-field::after {
+  right: -24%;
+  bottom: -38%;
+  background: conic-gradient(from 90deg, rgba(45, 212, 191, 0.26), rgba(79, 70, 229, 0.24), rgba(244, 63, 139, 0.18), transparent);
+}
+
+.mesh-ribbon {
+  background: #ffffff;
+}
+
+.dark .mesh-ribbon {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.14);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.54), transparent);
+  animation: shimmer 1.2s infinite;
+}
+
+.dark .skeleton::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
